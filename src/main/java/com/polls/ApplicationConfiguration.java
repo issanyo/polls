@@ -22,7 +22,7 @@ public class ApplicationConfiguration {
     @Bean
     CommandLineRunner loadDataFromJson(PollService pollService) {
         return args -> {
-            InputStream inputStream = ApplicationConfiguration.class.getResourceAsStream("polls.json");
+            InputStream inputStream = ApplicationConfiguration.class.getResourceAsStream("/polls.json");
             try {
                 Collection<PollEntity> polls = new ObjectMapper().readValue(inputStream, new TypeReference<>(){});
                 pollService.save(polls);

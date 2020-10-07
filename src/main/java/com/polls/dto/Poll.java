@@ -18,6 +18,7 @@ public class Poll {
     private String state;
     private String locale;
     private String title;
+    private String description;
     private User initiator;
     private Collection<Option> options;
     private String optionsHash;
