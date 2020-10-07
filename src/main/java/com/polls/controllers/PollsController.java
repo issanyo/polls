@@ -1,7 +1,6 @@
 package com.polls.controllers;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,13 +24,17 @@ public class PollsController {
     @ResponseStatus(HttpStatus.OK)
     public Collection<Poll> getPolls(@RequestParam(value = "user", required = false) final String user,
                                      @RequestParam(value = "title", required = false) final String title,
-                                     @RequestParam(value = "date", required = false) final Date date) {
+                                     @RequestParam(value = "date", required = false) final Long date) {
         if (user != null){
             return pollService.getByUser(user);
         }
 
         if (title != null){
             return pollService.searchByTitle(title);
+        }
+
+        if (date != null){
+            return pollService.getFromDate(date);
         }
         return null;
     }

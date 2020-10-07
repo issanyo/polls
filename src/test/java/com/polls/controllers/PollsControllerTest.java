@@ -1,8 +1,6 @@
 package com.polls.controllers;
 
-import java.time.Instant;
 import java.util.Collection;
-import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +10,6 @@ import com.polls.dto.Poll;
 import com.polls.repository.PollRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -43,6 +40,9 @@ class PollsControllerTest {
 
     @Test
     void getPollsAfterDate() {
-        assertNotNull(pollsController.getPolls(null, null, Date.from(Instant.now())));
+        final Collection<Poll> polls = pollsController.getPolls(null, null, 1484988265098L);
+        assertTrue(polls.size() > 0);
+        final Poll poll = polls.iterator().next();
+        assertTrue(poll.getInitiated() > 1484988265098L);
     }
 }

@@ -41,4 +41,12 @@ public class PollServiceImpl implements PollService{
                              .map((accountEntity) -> modelMapper.map(accountEntity, Poll.class))
                              .collect(Collectors.toList());
     }
+
+    @Transactional
+    public Collection<Poll> getFromDate(Long date) {
+        return pollRepository.findAllByInitiatedGreaterThanEqual(date)
+                             .stream()
+                             .map((accountEntity) -> modelMapper.map(accountEntity, Poll.class))
+                             .collect(Collectors.toList());
+    }
 }

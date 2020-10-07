@@ -7,4 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface PollRepository extends CrudRepository<PollEntity, String> {
     Collection<PollEntity> findAllByInitiatorEmail(String initiatorEmail);
     Collection<PollEntity> findAllByTitleContainingIgnoreCase(String title);
+    Collection<PollEntity> findAllByInitiatedGreaterThanEqual(Long date);
 }

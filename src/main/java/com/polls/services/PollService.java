@@ -10,4 +10,5 @@ public interface PollService {
     void save(Collection<PollEntity> users);
     Collection<Poll> getByUser(String user);
     Collection<Poll> searchByTitle(String title);
+    Collection<Poll> getFromDate(Long date);
 }

@@ -13,6 +13,7 @@ import com.polls.repository.PollEntity;
 import com.polls.repository.PollRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -51,5 +52,16 @@ class PollServiceImplTest {
     @Test
     void getPollsByTitleLikeNonExistent() {
         assertEquals(0, pollService.searchByTitle("t").size());
+    }
+
+    @Test
+    void getPollsByDateGreaterThan() {
+        when(pollRepository.findAllByInitiatedGreaterThanEqual(anyLong())).thenReturn(Collections.singletonList(new PollEntity()));
+        assertEquals(1, pollService.getFromDate(1L).size());
+    }
+
+    @Test
+    void getPollsByDateLessThan() {
+        assertEquals(0, pollService.getFromDate(1L).size());
     }
 }
