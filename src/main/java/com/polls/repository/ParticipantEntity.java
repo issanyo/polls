@@ -1,11 +1,11 @@
-package com.polls.dto;
+package com.polls.repository;
 
 import java.util.Collection;
 
 import lombok.Data;
 
 @Data
-public class Participant {
+public class ParticipantEntity {
     private Long id;
     private String name;
     private Collection<Boolean> preferences;

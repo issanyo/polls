@@ -1,8 +1,8 @@
 package com.polls.dto;
 
 public class User {
-    String name;
-    String email;
-    boolean notify;
-    String timeZone;
+    private String name;
+    private String email;
+    private boolean notify;
+    private String timeZone;
 }

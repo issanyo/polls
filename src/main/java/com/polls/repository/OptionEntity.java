@@ -1,9 +1,9 @@
-package com.polls.dto;
+package com.polls.repository;
 
 import lombok.Data;
 
 @Data
-public class Option {
+public class OptionEntity {
     private Long start;
     private Long end;
     private Long startDateTime;
