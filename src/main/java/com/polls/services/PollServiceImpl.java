@@ -33,4 +33,12 @@ public class PollServiceImpl implements PollService{
                                 .map((accountEntity) -> modelMapper.map(accountEntity, Poll.class))
                                 .collect(Collectors.toList());
     }
+
+    @Transactional
+    public Collection<Poll> searchByTitle(String title) {
+        return pollRepository.findAllByTitleContainingIgnoreCase(title)
+                             .stream()
+                             .map((accountEntity) -> modelMapper.map(accountEntity, Poll.class))
+                             .collect(Collectors.toList());
+    }
 }

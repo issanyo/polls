@@ -29,6 +29,10 @@ public class PollsController {
         if (user != null){
             return pollService.getByUser(user);
         }
+
+        if (title != null){
+            return pollService.searchByTitle(title);
+        }
         return null;
     }
 }

@@ -30,12 +30,15 @@ class PollsControllerTest {
         final Collection<Poll> polls = pollsController.getPolls("mh+sample@doodle.com", null, null);
         assertTrue(polls.size() > 0);
         final Poll poll = polls.iterator().next();
-        assertEquals("xsd4cv89t5f5um4b", poll.getId());
+        assertEquals("mh+sample@doodle.com", poll.getInitiator().getEmail());
     }
 
     @Test
     void getPollsByTitle() {
-        assertNotNull(pollsController.getPolls(null, "title", null));
+        final Collection<Poll> polls = pollsController.getPolls(null, "pluto", null);
+        assertTrue(polls.size() > 0);
+        final Poll poll = polls.iterator().next();
+        assertEquals("Is Pluto a planet?", poll.getTitle());
     }
 
     @Test

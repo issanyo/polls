@@ -38,7 +38,18 @@ class PollServiceImplTest {
     }
 
     @Test
-    void getPollsByNotExistentUser() {
+    void getPollsByNonExistentUser() {
         assertEquals(0, pollService.getByUser("x").size());
+    }
+
+    @Test
+    void getPollsByTitleLikeExistent() {
+        when(pollRepository.findAllByTitleContainingIgnoreCase(anyString())).thenReturn(Collections.singletonList(new PollEntity()));
+        assertEquals(1, pollService.searchByTitle("t").size());
+    }
+
+    @Test
+    void getPollsByTitleLikeNonExistent() {
+        assertEquals(0, pollService.searchByTitle("t").size());
     }
 }
