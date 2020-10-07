@@ -26,7 +26,7 @@ public class ApplicationConfiguration {
             try {
                 Collection<PollEntity> polls = new ObjectMapper().readValue(inputStream, new TypeReference<>(){});
                 pollService.save(polls);
-                log.info("Users inserted");
+                log.info("Polls inserted");
             } catch (IOException e){
                 log.error("Unable to load data from json", e);
             }

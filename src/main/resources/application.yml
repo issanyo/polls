@@ -1,0 +1,11 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:polls
+    username: admin
+    password: admin

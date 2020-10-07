@@ -6,10 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import com.polls.dto.Option;
-import com.polls.dto.Participant;
-import com.polls.dto.User;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -30,11 +28,13 @@ public class PollEntity {
     private String state;
     private String locale;
     private String title;
-    private User initiator;
-    private Collection<Option> options;
+    @ManyToOne
+    private UserEntity initiator;
+    @OneToMany
+    private Collection<OptionEntity> options;
     private String optionsHash;
-    private Collection<Participant> participants;
-    private Collection<String> invitees;
+    @OneToMany
+    private Collection<ParticipantEntity> participants;
     private String device;
     private String levels;
 }
